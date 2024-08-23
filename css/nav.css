@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/* CSS dokument */
+
+header, footer {
+    width: 100%;
+    background-color: var(--color-bg-nav);
+}
+
+header {
+    z-index: 1;
+}
+
+/* Makes the footer fixed to the bottom */
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-top: 1px solid var(--color-border-nav-top);
+    z-index: 2;
+}
+
+/* Remove list style, setting flex and alignment */
+#footer-mobilemenu > ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Set item width, alignment, styling of list items and changes the cursor on hover */
+#footer-mobilemenu > ul > li {
+    display: block;
+    width: 25%;
+    text-align: center;
+    border-right: 1px solid var(--color-border-nav-sides);
+    cursor: pointer;
+    font-family: "Inter-Medium",sans-serif !important;
+    line-height: 1;
+    font-size: 14px;
+    padding: 10px 5px;
+    /* padding-top: 46px; */
+}
+
+#footer-mobilemenu > ul > li :last-child {
+    border-right: none;
+}
+
+#footer-mobilemenu > ul > li > .icon {
+    margin-bottom: 5px;
+}
+
+
+
+#footer-mobilemenu > ul > li.logedin {
+    display: none;
+}

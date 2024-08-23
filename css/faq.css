@@ -1,0 +1,50 @@
+@charset "UTF-8";
+/* CSS dokument */
+
+.faq-accordion {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+}
+
+.faq-header, .faq-content {
+    width: 100%;
+}
+
+.faq-footer {
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.faq-footer-btn {
+    color: var(--color-btn-secondary);
+    background-color: var(--txt-secondary);
+    border: none;
+    padding: 15px 45px;
+    cursor: pointer;
+    line-height: 1;
+    font-family: "Inter-Black", sans-serif;
+    font-size: 18px;
+    border-radius: var(--border-radius);
+}
+
+@media only screen and (min-width: calc(769px)) {
+    .faq-accordion {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .faq-header {
+        width: 33.3333333333%;
+        padding-left: 20px;
+    }
+
+    .faq-content {
+        width: 66.6666666666%;
+        overflow: hidden;
+    }
+
+    .faq-footer {
+        padding-left: 33.3333333333%;
+    }
+}

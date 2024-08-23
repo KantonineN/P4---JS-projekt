@@ -2,23 +2,150 @@
 <html lang="dk">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="content">
+    <meta name="description" content="NF Bio er landets største biografkæde | 6 mio. filmglade gæster hvert år | Moderne teknologi | Se de nyeste film hos os og få en oplevelse i verdensklasse">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Title</title>
+    <title>Nordisk Film - Forside</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src=""></script>
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
+    <link rel="stylesheet" type="text/css" href="css/featured_movies.css">
+    <link rel="stylesheet" type="text/css" href="css/filter-nikka.css">
+    <link rel="stylesheet" type="text/css" href="css/faq.css">
+    <script src="scripts/filter-nikka.js" defer></script>
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav role="navigation" id="header-mobilemenu">
+            <div id="city">
+                Odense
+            </div>
+            <div>
+                Logo
+            </div>
+        </nav>
+    </header>
+
     <main>
-        <div class="width50">
-            <img class="responsive-img" src="images/hest.webp" alt="Hest">
+        <div class="field_item featured_movies">
+            <div class="card">
+                <a href="" class="featured_movie-wrapper">
+                    <img src="images/featured_movies/mørkeland.jpeg" alt="Mørkeland" loading="lazy"/>
+                    <div class="card-content">
+                        <div class="col1">
+                            <h2>Mørkeland</h2>
+                            <p>Politisk thriller med Anders W. Berthelsen</p>
+                        </div>
+                        <div class="col2">
+                            <div class="btn-icon">
+                                <img class="icon" src="images/icons/ticket-btn.svg" alt="Find billetter"/>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="" class="featured_movie-wrapper">
+                    <img src="images/featured_movies/nyhedsbrev.jpeg" alt="Mørkeland" loading="lazy"/>
+                    <div class="card-content">
+                        <div class="col1">
+                            <h2>Få vores nyhedsbrev</h2>
+                            <p>Bliv inviteret først til events!</p>
+                        </div>
+                        <div class="col2">
+                            <div class="btn-icon">
+                                <img class="icon" src="images/icons/ticket-btn.svg" alt="Find billetter"/>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="card">
+                <a href="" class="featured_movie-wrapper">
+                    <img src="images/featured_movies/deadpool&wolverine.jpeg" alt="Mørkeland" loading="lazy"/>
+                    <div class="card-content">
+                        <div class="col1">
+                            <h2>Deadpool & Wolverine</h2>
+                            <p>Det ultimative dream-team!</p>
+                        </div>
+                        <div class="col2">
+                            <div class="btn-icon">
+                                <img class="icon" src="images/icons/ticket-btn.svg" alt="Find billetter"/>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <div class="width50">
-            <h1>Frieser hest</h1>
-            <p>Frieser (også Friser og Friserhest) er en hesterace der tilhører de barokke heste ligesom Andalusier og Lipizzaner. Den egner sig til både kørsel, ridning, dressur og show.</p>
+        <div class="field_item">
+            Video eller slide
+        </div>
+        <div class="field_item">
+            <form id="movies-list-select">
+                <div class="form-filters-wrapper">
+                    <h2>Planlæg dit biografbesøg i Odense</h2>
+                    <div class="form-item">
+                        <input type="date" id="choose_date" name="date" onchange="Filter(this.valueAsDate)">
+                    </div>
+                    <div class="form-item">
+                        <div class="select-wrapper">
+                            <select id="choose_title" name="title">
+                                <option value="" selected>Vælg film</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <div class="select-wrapper">
+                            <select id="choose_version" name="version">
+                                <option value="" selected>Vælg version</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- <select name="testBtn" id="title">
+                    <option value="" selected>Vælg film</option>
+                </select> -->
+            </form>
+        </div>
+        <div class="field_item">Kommende film</div>
+        <div class="field_item">
+            <div class="faq-accordion">
+                <div class="faq-header">Faq overskrift</div>
+                <div class="faq-content">
+                    <div>Content / Fold down</div>
+                </div>
+                <div class="faq-footer">
+                    <button type="button" class="faq-footer-btn" onclick="href=''">Se alle</button>
+                </div>
+            </div>
         </div>
     </main>
-    <footer></footer>
+
+    <footer>
+        <nav role="navigation" id="footer-mobilemenu">
+            <ul>
+                <li>
+                     <img class="icon" src="images/icons/tickets-icon.svg"/>
+                    Billetter
+                </li>
+                <li>
+                    <img class="icon" src="images/icons/video-roll-icon.svg"/>
+                    Biografer    
+                </li>
+                <li class="login">
+                    <img class="icon" src="images/icons/login-icon.svg"/>
+                    Log ind    
+                </li>
+                <li class="logedin">
+                    <img class="icon" src="images/icons/login-icon.svg"/>
+                    Min profil    
+                </li>
+                <li>
+                    <img class="icon" src="images/icons/hamburger-menu-icon.svg"/>
+                    Menu
+                </li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>

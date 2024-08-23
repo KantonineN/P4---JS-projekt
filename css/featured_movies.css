@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/* CSS dokument */
+
+.featured_movies {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+}
+
+.featured_movies :first-child {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.card-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--color-card);
+}
+
+.card-content > .col1 {
+    grid-column: 1 / span 3;
+    grid-row: 1 / 1;
+    width: 100%;
+}
+
+.card-content > .col1 > h2 {
+    font-size: 25px;
+    color: var(--txt-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.card-content > .col1 > p {
+    font-family: "Inter-Medium",sans-serif;
+    font-size: 14x;
+    color: var(--txt-primary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-content > .col2 {
+    grid-column: 4 / span 1;
+    grid-row: 1 / 1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.featured_movie-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+@media only screen and (min-width: calc(769px)) {
+    .featured_movies {
+        grid-template-columns: repeat( 3, 1fr);
+        grid-template-rows: repeat ( 2, 1fr);
+    }
+
+    .featured_movies :first-child {
+        grid-column: 1 / span 2;
+        grid-row: 1 / span 2;
+    }
+}

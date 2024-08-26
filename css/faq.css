@@ -16,6 +16,11 @@
     padding-left: 0;
 }
 
+.faq-header > h2 {
+    font-size: 26px;
+    margin-top: 0;
+}
+
 .faq-footer-btn {
     color: var(--color-btn-secondary);
     background-color: var(--txt-secondary);

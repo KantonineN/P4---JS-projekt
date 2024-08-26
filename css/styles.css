@@ -63,6 +63,22 @@ div {
     display: block;
 }
 
+button {
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1;
+    background-color: var(--color-btn-primary);
+    color: var(--txt-primary);
+    font-size: 18px;
+    font-family: "Inter-Black", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}
+
 .icon {
     height: 30px;
     display: block;

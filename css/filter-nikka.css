@@ -4,18 +4,23 @@
 #movies-list-select {
     display: flex;
     flex-wrap: wrap;
-    position: relative;
+    position: sticky;
+    z-index: 200;
+    top: 0;
+    background-color: var(--color-bg);
     border-bottom: 1px solid var(--color-border-divider);
+    padding: 20px 0;
+    margin-bottom: 60px;
 }
 
-.form-filters-wrapper {
+.form-filter-wrapper {
     display: flex;
     flex-wrap: wrap;
     position: relative;
     width: 100%;
 }
 
-.form-filters-wrapper > h2 {
+.form-filter-wrapper > h2 {
     width: 100%;
     margin: 0 10px;
     padding-bottom: 20px;
@@ -23,14 +28,118 @@
     font-size: 26px;
 }
 
-.form-filters-wrapper > .form-item {
+.form-item {
     width: 50%;
+    position: relative;
+    padding: 0 10px;
+}
+
+.form-item:not(:last-child) {
     margin-bottom: 20px;
 }
 
-.form-item {
+.select-wrapper {
     position: relative;
-    padding: 0 10px;
+    width: 100%;
+}
+
+.select-wrapper::before,
+.select-wrapper::after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 10px;
+    pointer-events: none;
+}
+
+.select-wrapper::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid var(--txt-primary);
+    top: 45%;
+}
+
+.form-item-format-wrapper {
+    width: 100%;
+    order: 2;
+    display: flex;
+    border: none;
+}
+
+.form-item-format {
+    margin-right: 20px;
+    position: relative;
+    display: flex;
+}
+
+.label {
+    line-height: 27px;
+}
+
+input {
+    line-height: 1.15;
+}
+
+/* Hide the browser's default radio button */
+input[type=radio] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Create a custom radio button */
+input[type=radio] + .radiobtn {
+    cursor: pointer;
+    display: block;
+    height: 27px;
+    width: 27px;
+    padding-left: 37px;
+    position: relative;
+}
+
+input[type=radio] + .radiobtn::before, 
+input[type=radio] + .radiobtn::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 400ms;
+
+    font: var(--fa-font-regular);
+    font-size: 27px;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Set circle for unchecked */
+input[type=radio]+.radiobtn::before {
+    content: "\f111";
+}
+
+/* When the radio button is checked, add a blue background */
+input[type=radio]:checked + .radiobtn::before {
+    content: "\f111";
+    font: var(--fa-font-solid);
+    font-size: 27px;
+    color: var(--color-btn-primary);
+}
+
+/* Style the indicator */
+input[type=radio]:checked + .radiobtn::after {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
 }
 
 input[type="date"], select {
@@ -64,29 +173,113 @@ select {
     background-repeat: no-repeat;
 }
 
-.select-wrapper {
-    position: relative;
+
+.item-list > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+    list-style-type: none;
+}
+
+.item-list > ul > li {
+    width: 50%;
+    margin-bottom: 50px;
+}
+
+.item-list>ul>li>.content-wrapper {
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: unset;
+    padding: 0 15px;
+    cursor: pointer;
 }
 
-.select-wrapper::before,
-.select-wrapper::after {
-    --size: 0.3rem;
+.movie-preview-link {
+    text-decoration: none;
+    display: block;
+    outline: none;
+    color: var(--txt-primary);
+}
+
+.field-image {
+    border-radius: 5px;
+    margin-bottom: 0;
+}
+
+.field-image img {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, .5);
+}
+
+.movie-preview-link > h2 {
+    font-size: 16px;
+    font-family: "Inter-Bold", sans-serif;
+    line-height: 1.2;
+    margin: 25px 0;
+    padding: 0 10px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.field-btn {
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+    margin: 0 20px;
+    padding: 0;
+    margin-bottom: 20px;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    color: rgba(0, 0, 0, 0);
+}
+
+.field-btn > .icon {
+
     position: absolute;
-    content: "";
-    right: 10px;
-    pointer-events: none;
+    right: 9px;
+    top: 9px;
 }
 
-.select-wrapper::after {
-    border-left: var(--size) solid transparent;
-    border-right: var(--size) solid transparent;
-    border-top: var(--size) solid var(--txt-primary);
-    top: 45%;
-}
+
 
 @media only screen and (min-width: calc(769px)) {
-    .form-filters-wrapper > h2  {
+    .form-filter-wrapper > h2  {
         font-size: 30px;
+    }
+
+    .form-item {
+        width: calc(25% - 20px + 5px);
+        padding: 0;
+        margin: 0;
+        margin-right: 20px;
+    }
+
+    .form-item-format-wrapper {
+        margin-top: 20px;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .item-list > ul > li {
+        width: 25%;
+    }
+
+    .field-btn {
+        padding: 15px 30px;
+        padding-right: 50px;
+        margin-bottom: 30px;
+        color: var(--txt-primary);
+        width: fit-content;
+    max-width: calc(100% - 40px);
     }
 }

@@ -1,11 +1,11 @@
-var acc = document.getElementsByClassName("accordion");
+const acc = document.getElementsByClassName("accordion");
 
-for (var i = 0; i < acc.length; i++) {
+for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
         
-        var panel = this.nextElementSibling;
-        var arrow = this.querySelector(".arrow");
+        const panel = this.nextElementSibling;
+        const arrow = this.querySelector(".arrow");
 
         if (panel.classList.contains("open")) {
             panel.classList.remove("open");

@@ -81,14 +81,44 @@
             </div>
         </div>
         <div class="field_item">
-            Video eller slide
+
+                 <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images -->
+    <div class="mySlides fade">
+      <img src="images/slider/Deadpool-And-Wolverine-vandret.jpg" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="images/slider/Grusomme-mig-4.png" style="width:100%">
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="images/slider/Inderst-Inde-2.png" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+        <img src="images/slider/mOerkeland-vandret.jpg" style="width:100%">
+      </div>
+  
+      <!-- The dots/circles -->
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+  </div> 
+  </div>
+  <br>
+
         </div>
         <div class="field_item">
             <form id="movies-list-select">
                 <div class="form-filter-wrapper">
                     <h2>Planlæg dit biografbesøg i Odense</h2>
                     <div class="form-item">
-                        <input type="date" id="edit_date" name="date" >
+                        <input type="date" id="edit_date" name="date" value="">
                     </div>
                     <div class="form-item">
                         <div class="select-wrapper">
@@ -106,21 +136,22 @@
                     </div>
                     <fieldset class="form-item form-item-format-wrapper">
                         <div class="form-item-format">
-                            <input type="radio" id="edit_format1" name="format" checked="checked">
+                            <input type="radio" id="edit_format1" name="format" checked="checked" value="all">
                             <span class="radiobtn"></span>
                             <label for="edit_format1" class="label">Alle</label>
                         </div>
                         <div class="form-item-format">
-                            <input type="radio" id="edit_format2" name="format">
+                            <input type="radio" id="edit_format2" name="format" value="2d">
                             <span class="radiobtn"></span>
+                            <label for="edit_format2" class="label">2D</label>
+                        </div>
+                        <div class="form-item-format">
+                            <input type="radio" id="edit_format3" name="format" value="3d">
+                            <span class="radiobtn"></span>
+                            <label for="edit_format2" class="label">3D</label>
                         </div>
                     </fieldset>
                 </div>
-                
-
-                <!-- <select name="testBtn" id="title">
-                    <option value="" selected>Vælg film</option>
-                </select> -->
             </form>
             <div class="item-list">
                 <ul id="movie-list">

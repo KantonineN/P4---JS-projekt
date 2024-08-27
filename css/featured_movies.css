@@ -59,6 +59,7 @@
     justify-content: space-between;
     flex-direction: column;
     height: 100%;
+    text-decoration: none;
 }
 
 
@@ -71,5 +72,11 @@
     .featured_movies :first-child {
         grid-column: 1 / span 2;
         grid-row: 1 / span 2;
+    }
+
+    .card-content > .col1 {
+        grid-column: 1 / span 3;
+        grid-row: 1 / 1;
+        width: 100%;
     }
 }

@@ -97,7 +97,6 @@ function GetUniqueValuesFromArray() {
     let uniqueArrayValue = {};
 
     allFilters = document.querySelectorAll(".table-filter");
-    console.log(allFilters);
     // allFilters.forEach(element => {
         // console.log(element.id);
         // console.log(element.name);
@@ -108,9 +107,6 @@ function GetUniqueValuesFromArray() {
     // });
 
     for (let i = 0; i < allFilters.length; i++) {
-        console.log("For loop called")
-        console.log(allFilters[i].id)
-        console.log(allFilters[i].name)
     }
 
     // for (let i; i < allFilters.length; i++) {
@@ -129,7 +125,6 @@ function Filter(input) {
         // Checks if the chosen date is after the start date and before end date
         if (testInput > movie.start && testInput < movie.end) {
             filteredData.push(movie);
-            console.log(movie);
         }
     };
     console.log(filteredData);

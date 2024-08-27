@@ -1,0 +1,47 @@
+.accordion {
+    background-color: #1b273a;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    position: relative;
+}
+
+.arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 5px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg); 
+    transition: transform 0.5s ease-in-out; 
+}
+
+.panel {
+    max-height: 0; 
+    overflow: hidden; 
+    background-color: #1b273a;
+    color: #949c9b;
+    padding: 0 18px; 
+    transition: max-height 0.5s ease-in-out; 
+    border-bottom: 1.5px solid #283242;
+}
+
+.panel.open {
+    max-height: 1000px; 
+}
+
+.panel p {
+    margin: 1rem; 
+}
+
+.underline {
+    text-decoration: underline;
+    color: white; 
+}

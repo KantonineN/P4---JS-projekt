@@ -86,11 +86,6 @@ function SetDropdownTitles() {
 
     // Iterate through movies array
     for (let i = 0; i < movies.length; i++) {
-        // creates a const with the object at index i in movies
-        const title = movies[i].title;
-        // creates an option with the title for the current index
-        // new Option(text, value)
-        select.options.add(new Option(title, title));
     };
 };
 

@@ -1,14 +1,14 @@
-let movies = [
-    {"title": "Mørkeland", "format": ["2d"], "version": ["Tapas&Film", "BabyBio"], "image": "images/movies/morkeland.jpeg", "start": new Date (), "end": new Date (2024, 9, 24)},
-    {"title": "Deadpool & Wolverine", "format": ["2d"], "version": [], "image": "images/movies/deadpoolwolverine.jpeg", "start": new Date (), "end": new Date (2024, 10, 17)},
-    {"title": "Alien: Romulus", "format": ["2d"], "version": [], "image": "images/movies/alien.jpg", "start": new Date (), "end": new Date (2024, 8, 7)},
-    {"title": "Longlegs", "format": ["2d"], "version": [], "image": "images/movies/longlegs.jpeg", "start": new Date (), "end": new Date (2024, 8, 16)},
-    {"title": "Grusomme mig 4", "format": ["2d"], "version": [], "image": "images/movies/grusommemig.jpeg", "start": new Date (), "end": new Date (2024, 11, 2)},
-    {"title": "Inderst inde 2", "format": ["2d"], "version": [], "image": "images/movies/inderstinde2.jpeg", "start": new Date (), "end": new Date (2024, 10, 11)},
-    {"title": "Trap", "format": ["2d"], "version": [], "image": "images/movies/trap.jpeg", "start": new Date (), "end": new Date (2024, 8, 23)},
-    {"title": "One Life", "format": ["2d"], "version": [], "image": "images/movies/onelife.jpeg", "start": new Date (), "end": new Date (2024, 9,7)},
-    {"title": "Blink Twice", "format": ["2d"], "version": [], "image": "images/movies/blinktwice.jpeg", "start": new Date (), "end": new Date (2024, 9, 1)},
-    {"title": "Twisters", "format": ["2d"], "version": [], "image": "images/movies/twisters.jpeg", "start": new Date (), "end": new Date (2024, 9, 4)},
+const movies = [
+    {"title": "Mørkeland", "version": ["Tapas&Film", "BabyBio"], "format": ["2d"], "image": "images/movies/morkeland.jpeg", "start": new Date (), "end": new Date (2024, 9, 24)},
+    {"title": "Deadpool & Wolverine", "version": ["BabyBio"], "format": ["2d"], "image": "images/movies/deadpoolwolverine.jpeg", "start": new Date (), "end": new Date (2024, 10, 17)},
+    {"title": "Alien: Romulus", "version": [], "format": ["2d"], "image": "images/movies/alien.jpg", "start": new Date (), "end": new Date (2024, 8, 7)},
+    {"title": "Longlegs", "version": [], "format": ["2d"], "image": "images/movies/longlegs.jpeg", "start": new Date (), "end": new Date (2024, 8, 16)},
+    {"title": "Grusomme mig 4", "version": ["Eng. tale", "Dansk tale"], "format": ["2d"], "image": "images/movies/grusommemig.jpeg", "start": new Date (), "end": new Date (2024, 11, 2)},
+    {"title": "Inderst inde 2", "version": ["Eng. tale", "Dansk tale"], "format": ["2d"], "image": "images/movies/inderstinde2.jpeg", "start": new Date (), "end": new Date (2024, 10, 11)},
+    {"title": "Trap", "version": [], "format": ["2d"], "image": "images/movies/trap.jpeg", "start": new Date (), "end": new Date (2024, 8, 23)},
+    {"title": "One Life", "version": [], "format": ["2d"], "image": "images/movies/onelife.jpeg", "start": new Date (), "end": new Date (2024, 9,7)},
+    {"title": "Blink Twice", "version": [], "format": ["2d"], "image": "images/movies/blinktwice.jpeg", "start": new Date (), "end": new Date (2024, 9, 1)},
+    {"title": "Twisters", "version": [], "format": ["3d"], "image": "images/movies/twisters.jpeg", "start": new Date (), "end": new Date (2024, 9, 4)},
 ];
 
 
@@ -66,8 +66,8 @@ function CreateMovieList() {
         img2.setAttribute("src", "images/icons/ticket-btn.svg");
         img2.setAttribute("alt", "Find billetter");
         document.getElementById("btn" + [i]).appendChild(img2);
-    }    
-}
+    }; 
+};
 
 function SetDateRangeDatepicker() {
     const element = document.getElementById('edit_date');
@@ -79,68 +79,126 @@ function SetDateRangeDatepicker() {
 
     // Sets the latest date to 3 months from now
     element.max = new Date(date.setMonth(date.getMonth() + 3)).toISOString().split("T")[0];
-}
+};
 
-// function GetDropdownData(filterId, filterName) {
-//     selectType = document.getElementById(filterId);
-//     const filters = filterName;
-//     // const filters = "movie." + filterName;
-//     for (let i = 0; i < movies.length; i++) {
-//         // const movie = "movies[i]" + filter;
-//         const movie = movies[i];
-//         // console.log(movie)
-//         selectType.options.add(new Option(movie.title, movie.title));
-//     };
-// }
+function SetDropdownTitles() {
+    // Get select element with chosen id
+    const select = document.getElementById("edit_title");
 
-function GetUniqueValuesFromArray() {
-    let uniqueArrayValue = {};
-
-    allFilters = document.querySelectorAll(".table-filter");
-    console.log(allFilters);
-    // allFilters.forEach(element => {
-        // console.log(element.id);
-        // console.log(element.name);
-        
-        // movies.forEach(element => {
-            
-        // });
-    // });
-
-    for (let i = 0; i < allFilters.length; i++) {
-        console.log("For loop called")
-        console.log(allFilters[i].id)
-        console.log(allFilters[i].name)
-    }
-
-    // for (let i; i < allFilters.length; i++) {
-    //     console.log("called")
-    //     selectType = document.getElementById(allFilters[i]);
-    //     console.log(allFilters[i]);
-    //     console.log(allFilters.selectTypeByTagName("select"));
-    // }
-}
-
-function Filter(input) {
-    const testInput = input;
-    const filteredData = [];
+    // Iterate through movies array
     for (let i = 0; i < movies.length; i++) {
-        let movie = movies[i];
-        // Checks if the chosen date is after the start date and before end date
-        if (testInput > movie.start && testInput < movie.end) {
-            filteredData.push(movie);
-            console.log(movie);
-        }
+        // creates a const with the object at index i in movies
+        const title = movies[i].title;
+        // creates an option with the title for the current index
+        // new Option(text, value)
+        select.options.add(new Option(title, title));
     };
-    console.log(filteredData);
-}
+};
+
+// Creates an array with the unique versions from movies array
+function CreateUniqueVersions() {
+    // Creates an array for containing the unique version from movies
+    const uniqueVersionDict = [];
+    // Get select element with chosen id
+    const select = document.getElementById("edit_version");
+
+    // Iterate through movies array
+    for (let i = 0; i < movies.length; i++) {
+        // creates an array with the object at index i in movies
+        const versionArray = movies[i].version;
+
+        // Iterate through the versionArray
+        for (let i = 0; i < versionArray.length; i++) {
+            // creates a const with the element at index i in versionArray
+            const version = versionArray[i];
+            // Checks if the version already exsist in uniqueVersionDict
+            if (uniqueVersionDict.includes(version)) {
+                // if the version exsist do nothing
+            } else {
+                // else append the version to uniqueVersionDict
+                uniqueVersionDict.push(version);
+            };
+        };
+    };
+    return uniqueVersionDict;
+};
+
+
+function SetDropdownVersions() {
+    // Sets uniqueVersion equal to the return value from CreateUniqueVersions()
+    const uniqueVersions = CreateUniqueVersions();
+    // Get select element with chosen id
+    const select = document.getElementById("edit_version");
+    
+    // Iterate through uniqueVersions
+    for (let i = 0; i < uniqueVersions.length; i++) {
+        // creates a const with the element at index i in uniqueVersions
+        const version = uniqueVersions[i];
+        // creates an option with the version for the current index
+        // new Option(text, value)
+        select.options.add(new Option(version, version));
+    };
+};
+
+function GetFilteredMovies() {
+    const movieList = document.getElementById("movie-list").children;
+
+    let filterDate = document.getElementById("edit_date").value;
+    const filterTitle = document.getElementById("edit_title").value;
+    const filterVersion = document.getElementById("edit_version").value;
+    let filterFormat = document.getElementsByName("format");
+
+    // If no date is set then sets the filterDate to today for filter purposes
+    if (filterDate == "") {
+        filterDate = new Date().toISOString().split("T")[0];
+    };
+
+    filterFormat.forEach(element => {
+        if (element.checked) {
+            filterFormat = element.value;
+        };
+    });
+
+    for (let i = 0; i < movieList.length; i++) {
+        const listStartDate = movies[i].start.toISOString().split("T")[0];
+        const listEndDate = movies[i].end.toISOString().split("T")[0];
+        const listTitle = movies[i].title;
+        const listVersion = movies[i].version;
+        const listFormat = movies[i].format;
+
+        if (Filter(filterDate, filterTitle, filterVersion, filterFormat, listStartDate, listEndDate, listTitle, listVersion, listFormat) == true) {
+            movieList[i].style.display = "list-item";
+        } else {
+            movieList[i].style.display = "none";
+        };
+    };
+};
+
+function Filter (filterDate, filterTitle, filterVersion, filterFormat, listStartDate, listEndDate, listTitle, listVersion, listFormat) {
+    if (listStartDate > filterDate || filterDate > listEndDate) {
+        return false;
+    };
+    if (filterTitle != "all" && filterTitle != listTitle) {
+        return false;
+    };
+    if (filterVersion != "all" && listVersion.indexOf(filterVersion) == -1) {
+        return false;
+    }
+    if (filterFormat != "all" && listFormat.indexOf(filterFormat) == -1) {
+        return false;
+    }
+    return true;
+};
 
 CreateMovieList();
 
 SetDateRangeDatepicker();
+SetDropdownTitles();
+SetDropdownVersions();
 
-GetUniqueValuesFromArray();
-
-// Kan man sende en param med f.eks. title?
-// GetDropdownData("edit_title", "title");
-// Er det muligt at bruge id eller name til at bestemme hvilke data der skal trækkes ud?
+document.getElementById("edit_date").addEventListener("change", GetFilteredMovies);
+document.getElementById("edit_title").addEventListener("change", GetFilteredMovies);
+document.getElementById("edit_version").addEventListener("change", GetFilteredMovies);
+document.getElementById("edit_format1").addEventListener("change", GetFilteredMovies);
+document.getElementById("edit_format2").addEventListener("change", GetFilteredMovies);
+document.getElementById("edit_format3").addEventListener("change", GetFilteredMovies);

@@ -11,49 +11,48 @@ const movies = [
     {"title": "Twisters", "version": [], "format": ["3d"], "image": "images/movies/twisters.jpeg", "start": new Date (), "end": new Date (2024, 9, 4)},
 ];
 
-
 function CreateMovieList() {
     // Get the ul element
-    let list = document.getElementById("movie-list");
+    const list = document.getElementById("movie-list");
 
     for (let i = 0; i < movies.length; i++) {
         // Creates a li element for each index in the array
-        let li = document.createElement("li");
+        const li = document.createElement("li");
         li.setAttribute("id", "li" + [i]);
         list.appendChild(li);
 
         // Creates a article element in the li element for each index in the array
-        let article = document.createElement("article");
+        const article = document.createElement("article");
         article.classList.add("content-wrapper");
         article.setAttribute("id", "content-wrapper" + [i]);
         document.getElementById("li" + [i]).appendChild(article);
 
         // Creates a a element in the article element for each index in the array
-        let a = document.createElement("a");
+        const a = document.createElement("a");
         a.classList.add("movie-preview-link");
         a.setAttribute("id", "movie-preview-link" + [i]);
         document.getElementById("content-wrapper" + [i]).appendChild(a);
 
         // Creates div in the a element for each index in the array
-        let div = document.createElement("div");
+        const div = document.createElement("div");
         div.classList.add("field-image");
         div.setAttribute("id", "field-image" + [i]);
         document.getElementById("movie-preview-link" + [i]).appendChild(div);
 
         // Creates image element in the div for each index in the array
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.setAttribute("src", movies[i].image);
         img.setAttribute("alt", movies[i].title + " poster");
         document.getElementById("field-image" + [i]).appendChild(img);
 
         // Creates h2 in the a element for each index in the array
-        let h = document.createElement("h2");
+        const h = document.createElement("h2");
         h.setAttribute("id", "h" + [i]);
         document.getElementById("movie-preview-link" + [i]).appendChild(h);
         document.getElementById("h" + [i]).innerHTML = movies[i].title;
 
         // Creates button in the a element for each index in the array
-        let btn = document.createElement("button");
+        const btn = document.createElement("button");
         btn.classList.add("btn-icon");
         btn.classList.add("field-btn");
         btn.setAttribute("id", "btn" + [i]);
@@ -61,7 +60,7 @@ function CreateMovieList() {
         document.getElementById("btn" + [i]).innerHTML = "Køb ";
 
         // Creates image in the button element for each index in the array
-        let img2 = document.createElement("img");
+        const img2 = document.createElement("img");
         img2.classList.add("icon");
         img2.setAttribute("src", "images/icons/ticket-btn.svg");
         img2.setAttribute("alt", "Find billetter");
@@ -123,7 +122,6 @@ function CreateUniqueVersions() {
     return uniqueVersionDict;
 };
 
-
 function SetDropdownVersions() {
     // Sets uniqueVersion equal to the return value from CreateUniqueVersions()
     const uniqueVersions = CreateUniqueVersions();
@@ -141,11 +139,16 @@ function SetDropdownVersions() {
 };
 
 function GetFilteredMovies() {
+    // Gets the li elements of movie-list. Used for showing/hiding the elements
     const movieList = document.getElementById("movie-list").children;
 
+    // Gets the value from the datepicker
     let filterDate = document.getElementById("edit_date").value;
+    // Gets the value from the title dropdown
     const filterTitle = document.getElementById("edit_title").value;
+    // Gets the value from the version dropdown
     const filterVersion = document.getElementById("edit_version").value;
+    // Makes an array of the radio button objects
     let filterFormat = document.getElementsByName("format");
 
     // If no date is set then sets the filterDate to today for filter purposes
@@ -153,19 +156,23 @@ function GetFilteredMovies() {
         filterDate = new Date().toISOString().split("T")[0];
     };
 
+    // Iterate through the radio buttons to find which one is checked and gets its value
     filterFormat.forEach(element => {
         if (element.checked) {
             filterFormat = element.value;
         };
     });
 
-    for (let i = 0; i < movieList.length; i++) {
+    // Iterate through movies array
+    for (let i = 0; i < movies.length; i++) {
+        // Finds each movies start date, end date, title, versions and formats
         const listStartDate = movies[i].start.toISOString().split("T")[0];
         const listEndDate = movies[i].end.toISOString().split("T")[0];
         const listTitle = movies[i].title;
         const listVersion = movies[i].version;
         const listFormat = movies[i].format;
 
+        // Calls the filter function and shows/hides the list element depending on the return value
         if (Filter(filterDate, filterTitle, filterVersion, filterFormat, listStartDate, listEndDate, listTitle, listVersion, listFormat) == true) {
             movieList[i].style.display = "list-item";
         } else {
@@ -175,18 +182,24 @@ function GetFilteredMovies() {
 };
 
 function Filter (filterDate, filterTitle, filterVersion, filterFormat, listStartDate, listEndDate, listTitle, listVersion, listFormat) {
+    // If chosen date isn't within date range
     if (listStartDate > filterDate || filterDate > listEndDate) {
         return false;
     };
+    // if title filter isn't all or equal to the title
     if (filterTitle != "all" && filterTitle != listTitle) {
         return false;
     };
+    // if version filter isn't all or equal to the version
+    // indexOf is used to see if the filter value is in the listVersion array
     if (filterVersion != "all" && listVersion.indexOf(filterVersion) == -1) {
         return false;
     }
+    // if format filter isn't all or equal to the format
     if (filterFormat != "all" && listFormat.indexOf(filterFormat) == -1) {
         return false;
     }
+    // If none of the filter conditions is met return true
     return true;
 };
 
